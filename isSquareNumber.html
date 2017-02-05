@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>codewars</title>
+</head>
+<body>
+	<script>
+		//Task:输入一个整数，判断它是否是 square number:In mathematics, a square number or perfect square is an interger that is the square fo an interger; in other words, it is the product of some interger with itself.
+
+		function isSquare(integer){
+			if(typeof integer!== 'number'){
+				console.log(integer+" is not a number");
+			}
+			else if(integer<0||Math.sqrt(integer)%1!==0){
+				console.log(integer+" is not a square number");
+			}
+			else{
+				console.log(integer+" is a square number");
+			}		
+		}
+		//思路：square Number使用Math.sqrt()得到的一定是整数。且任何整数都会被1整除，即余数为0。 
+		isSquare("string");
+		isSquare(true);
+		isSquare(-5);
+		isSquare(5);
+		isSquare(4);
+		isSquare(9);
+		isSquare(9.5);
+		isSquare(0.36);
+
+		// 说明:js中判断是否是整数为本题的关键，上例中采用求余的方法是可行的，除此之外，还可以是下列方法：
+		//1. 使用Math.round()或Math.floor()或Math.ceil()取整后判断是否等于它自己。
+		//2. 使用ES6提供的Number.isInterger()方法来判断，返回true，则表示是整数。
+	</script>
+</body>
+</html>
