@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>sumDigPaw</title>
+</head>
+<body>
+	<script>
+		function subDigPaw (a,b){
+			var corsArr = [];
+			for(var start=a; start<b; start++){
+				var sum = 0;
+				var intLen = (start).toString().length;
+				for(var i=0;i<intLen+1;i++){
+					var sum = sum + Math.pow(Number((start).toString().charAt(i)),i+1);
+				}	
+				if(sum == start){
+					corsArr.push(start);
+				}
+			}
+			console.log(corsArr);
+		}
+
+		subDigPaw(1,10); //[1, 2, 3, 4, 5, 6, 7, 8, 9]
+		subDigPaw(1,100); //[1, 2, 3, 4, 5, 6, 7, 8, 9, 89]
+		subDigPaw(1,1000); //[1, 2, 3, 4, 5, 6, 7, 8, 9, 89, 135, 175, 518, 598]
+
+		// 注意：这样解题的思路非常好，即将数组向字符串转化，这样使用charAt就可以轻松的取到每一分位，然后再将之通过Number转化为数字即可。另外，应当注意 corsArr必须在for之外，否则就会被重置。而sum在第一层循环之内。
+
+		//The number 89 is the first integer with more than one digit that fulfills the property partially introduced in the title of this kata. What's the use of saying "Eureka"? Because this sum gives the same number.
+
+		//In effect: 89 = 8^1 + 9^2
+
+		//The next number in having this property is 135.
+
+		//See this property again: 135 = 1^1 + 3^2 + 5^3
+
+		//We need a function to collect these numbers, that may receive two integers a, b that defines the range [a, b] (inclusive) and outputs a list of the sorted numbers in the range that fulfills the property described above.
+
+		//Let's see some cases:
+
+		//sumDigPow(1, 10) == [1, 2, 3, 4, 5, 6, 7, 8, 9]
+
+		//sumDigPow(1, 100) == [1, 2, 3, 4, 5, 6, 7, 8, 9, 89]
+
+		// 最终返回一个数组
+	</script>
+</body>
+</html>
