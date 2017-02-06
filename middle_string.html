@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>middle_string</title>
+</head>
+<body>
+<script>
+    //You are going to be given a word. Your job is to return the middle character of the word. If the word's length is odd, return the middle character. If the word's length is even, return the middle 2 characters.
+	function return_mid (str){
+		// 如果不是字符串，则return
+		if(typeof str !== "string"){
+			console.warn(str+" is not a string");
+			return;
+			//当出现问题后，直接return
+		}
+		if(str.length==0){
+			console.warn("you input a vacant string");
+			return;
+			// 当出现问题后，直接return
+		}
+		if(str.length%2==0){
+			console.log(str.charAt(str.length/2-1).concat(str.charAt(str.length/2)));
+		}
+		if(str.length%2==1){
+			console.log(str.charAt((str.length-1)/2));
+		}
+
+	}
+	return_mid(888); //888 is not a string
+	return_mid("string"); //"ri"
+	return_mid("inter"); // "t"
+	return_mid("");
+</script>
+</body>
+</html>
