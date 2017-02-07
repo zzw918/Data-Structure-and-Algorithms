@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>unique_in_order</title>
+</head>
+<body>
+	<script>
+		//Implement the function unique_in_order which takes as argument a sequence and returns a list of items without any elements with the same value next to each other and preserving the original order of elements.
+
+		function uniqueInOrder(arr){
+			if(typeof arr == "string"){
+				arr = arr.split("");
+			}
+			if(typeof arr !== "object"){
+				// 注意：这里不能使用instanceof来判断
+				console.error("plz input a string or a Array");
+				return;
+			}
+			// 如果是字符串，就把字符串转化成数组
+			for (var i = 1; i < arr.length; i++) {
+				//注意：这里数组arr可能是会变化的，所以arr.length是不能缓存的。
+				if(arr[i]==arr[(i-1)]){
+					arr.splice(i,1);
+					// splice方法指定的第一个参数时 要删除的位置的index，而第二个参数是删除的个数，这里用slice方法也可以实现。
+					i--;
+					// 重要，一旦删除，那么i必须减去1，否则有可能导致遗漏。
+				}
+			}
+			console.log(arr);
+
+		}
+
+		//核心：解决问题时，先解决主要问题，次要问题最后再完善，即渐进增强。
+
+		uniqueInOrder('AAAABBBCCDAABBB'); //['A', 'B', 'C', 'D', 'A', 'B']
+		uniqueInOrder('ABBCcAD');         //['A', 'B', 'C', 'c', 'A', 'D']
+		uniqueInOrder([1,2,2,3,3]);       //[1,2,3]
+		uniqueInOrder(8);       //[1,2,3]
+	</script>
+</body>
+</html>
