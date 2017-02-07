@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>persistence</title>
+</head>
+<body>
+<script>
+	function persistence(number){
+		if(typeof number !== 'number'){
+			console.error("plz input number");
+			return;
+		}
+		if(number<0){
+			console.warn("plz input a positive number");
+			return;
+		}
+		var arr = (number).toString().split("");
+		// 将一个数字先转化成字符串，再转化成数组，操作数组会更方便一些。
+		var arrLen = arr.length;
+		if(arrLen == 1){
+			console.log("0");
+			return;
+		}
+		// 若长度为1，则直接返回0即可。
+		var sum = 1;
+		var return_num = 0;
+		//因为sum和return_num在后面的过程中是变化的，所以要放在循环外面
+		do{	
+			return_num++;
+			//因为只要是执行到这一步的数，其return_num至少为1.
+			sum = 1;
+			//注意：这一步和var sum =1 不同，它是不可缺少的，为了每次循环都重新开始！
+			for (var i = 0; i < arrLen; i++) {
+					 sum *= arr[i]
+			}
+			arr = (sum).toString().split("");
+			arrLen = arr.length;
+			//得到新的数组之后，第二次就会以这个新的数组循环了。
+		}while(sum>=10)
+		console.log(return_num);
+		//思想非常简单： 先求出各个位的乘积，然后将这个乘积“缓存”，如果满足一定条件，下次就使用这个缓存，注意：这个缓存的每次不是相同的。
+	}	
+	persistence(39); //3
+	persistence("dfa"); //plz input number
+	persistence(-8); //lz input a positive number
+	persistence(999); //4
+	persistence(4); //0
+	persistence(25);//2
+	//Write a function, persistence, that takes in a positive parameter num and returns its multiplicative persistence, which is the number of times you must multiply the digits in num until you reach a single digit.
+</script>
+</body>
+</html>
