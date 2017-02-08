@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>iqTest</title>
+</head>
+<body>
+	<script>
+	//	Bob is preparing to pass IQ test. The most frequent task in this test is to find out which one of the given numbers differs from the others. Bob observed that one number usually differs from the others in evenness. 
+	//Help Bob — to check his answers, he needs a program that among the given numbers finds one that is different in evenness, and return a position of this number.
+	//! Keep in mind that your task is to help Bob solve a real IQ test, which means indexes of the elements start from 1 (not 0)
+		function iqTest(str){
+			var test = /(\d\s)+\d/;
+			var de = test.test(str);
+			if(!de){
+				console.error("illegal!");
+				return;
+			}
+			var arr = str.split(" ");
+			// 首先，判断这个数组arr中odd多还是even多，如果odd多，就输出even的index；如果even多，就输出odd的index；
+			var odd=0;
+			var even=0;
+			for(var i=0,len=arr.length;i<len;i++){
+				if(Math.abs(arr[i]%2)==0||arr[i]==0){
+					even++;
+				}else{
+					odd++;
+				}
+				// 分别得出even和odd的数目
+			}
+			if((even>odd)&&(odd!==0)){
+				// 如果even多，且odd不为0，就找到odd并返回索引加1
+				for(var i=0,len=arr.length;i<len;i++){
+					if(Math.abs(arr[i])%2==1){
+						console.log(i+1);
+						return;
+					}
+				}
+			}else if((even<odd)&&(even!==0)){
+				// 如果odd多，且even不为0，就找到even并返回索引加1
+				for(var i=0,len=arr.length;i<len;i++){
+					if(Math.abs(arr[i])%2==0){
+						console.log(i+1);
+						return;
+					}
+				}
+			}else{
+				console.log("your question is wrong");
+			}
+		}
+
+
+		iqTest("2 4 7 8 10")  // 3 Third number is odd, while the rest of the numbers are even
+		iqTest("1 2 1 1")  // 2 Second number is even, while the rest of the numbers are odd
+		iqTest("1 1 2 2")   // your question is wrong
+		iqTest("1 1 1 1")	// your question is wrong
+		iqTest(null); // illegal!
+	</script>
+</body>
+</html>
