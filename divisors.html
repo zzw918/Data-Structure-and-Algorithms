@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>divisors</title>
+</head>
+<body>
+	<script>
+		//Create a function named divisors that takes an integer and returns an array with all of the integer's divisors(except for 1 and the number itself). If the number is prime return the string '(integer) is prime' (use Either String a in Haskell).
+
+		function divisors(number){
+			if(typeof number !== "number"){
+				console.err("plz input a number");
+				return;
+			}
+			if(number<=0){
+				console.warn("plz input a positive number");
+				return;
+			}
+			var divisorsArr = [];
+			for(var i=2;i<number;i++){
+				if(number/i == ((number/i)|0)){
+					divisorsArr.push(i);
+				}
+			}
+			if(divisorsArr.length==0){
+				console.warn(number+" is prime");
+				return;
+			}
+			console.log(divisorsArr);
+			
+		}
+
+
+		divisors(12); //[2,3,4,6]
+		divisors(25); //[5]
+		divisors(13); //"13 is prime"
+		divisors(-12); //plz input a positive number
+		divisors(0); //plz input a positive number	
+	</script>
+</body>
+</html>
