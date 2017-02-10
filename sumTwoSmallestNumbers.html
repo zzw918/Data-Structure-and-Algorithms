@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>sumTwoSmalllNumbers</title>
+</head>
+<body>
+<script>
+//Create a function that returns the sum of the two lowest positive numbers given an array of minimum 4 integers. No floats or empty arrays will be passed.
+
+//For example, when an array is passed like [19,5,42,2,77], the output should be 7.
+
+//[10,343445353,3453445,3453545353453] should return 3453455.
+
+//Hint: Do not modify the original array.
+function sumTwoSmalllNumbers(arr){
+	// var newArr = arr.sort(function(a,b){
+	// 	if(a<b){
+	// 		return -1;
+	// 	}else{
+	// 		return 1;
+	// 	}
+	// });
+	// 如果直接使用sort函数，那么此方程会比较数组中每个number的字符串。所以这里需要传入一个方程，当a<b时返回-1，否则返回1。但是这种方法的缺点在于会改变原来的数组。所以采用下面的方法。
+	var min = arr[0];
+	for(var i=1,len=arr.length;i<len;i++){
+		if(arr[i]<min){
+			min=arr[i];
+			var j = i;
+			// 把i的值赋给j，在计算次小值的时候需要使用到这个j。
+		}
+	}
+	// console.log(min);
+	if(typeof arr[j+1] == "undefined"){
+		var min_second = arr[j-1]; 
+	}else{
+		var min_second = arr[j+1];
+	}
+	for(var k=1,len=arr.length;k<len;k++){
+		if(k==j){
+			continue;
+		}
+		if(arr[k]<min_second){
+			min_second = arr[k];
+		}
+	}
+	// console.log(min_second);
+	console.log(min+min_second);
+	console.log(arr);
+}	
+sumTwoSmalllNumbers([19,5,42,3,1]); // 8
+sumTwoSmalllNumbers([78,5,23,9]); //14
+sumTwoSmalllNumbers([15,23,45,6,58,5]); //11
+
+
+</script>
+</body>
+</html>
+
+
+
