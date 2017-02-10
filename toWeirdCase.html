@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>toWeirdCase</title>
+</head>
+<body>
+	<script>
+		//Write a function toWeirdCase (weirdcase in Ruby) that accepts a string, and returns the same string with all even indexed characters in each word upper cased, and all odd indexed characters in each word lower cased. The indexing just explained is zero based, so the zero-ith index is even, therefore that character should be upper cased.
+
+		//The passed in string will only consist of alphabetical characters and spaces(' '). Spaces will only be present if there are multiple words. Words will be separated by a single space(' ').
+		function toWeirdCase(str){
+			var newStr = [];
+			var status = true;
+			for (var i = 0; i < str.length; i++) {
+				if(str[i]==" "){
+					newStr[i] = " ";
+					status=!status;
+					continue;
+				}
+
+				if(status==true){
+					newStr[i] = str[i].toUpperCase();
+					status = false;
+				}else{
+					newStr[i] = str[i].toLowerCase();
+					status = true;
+				}
+			}
+			 // str.toUpperCase();
+			console.log(newStr);
+			var str = newStr.toString();
+			console.log(str);
+
+
+			for(var i=0;i<newStr.length;i++){
+				str[i] = newStr[i];
+			}
+			console.log(str);
+		}
+		// 这道题值得注意的是：一旦字符串的长度确定，我们就不能再修改其长度，所以用数组的方法来处理之会更加方便。
+
+
+		toWeirdCase( "string" );               //returns "StRiNg"
+		toWeirdCase( "Weird string case" );    //returns "WeIrD StRiNg CaSe
+	</script>
+</body>
+</html>
