@@ -47,9 +47,26 @@ function sumTwoSmalllNumbers(arr){
 	console.log(min+min_second);
 	console.log(arr);
 }	
-sumTwoSmalllNumbers([19,5,42,3,1]); // 8
-sumTwoSmalllNumbers([78,5,23,9]); //14
-sumTwoSmalllNumbers([15,23,45,6,58,5]); //11
+// sumTwoSmalllNumbers([19,5,42,3,1]); // 8
+// sumTwoSmalllNumbers([78,5,23,9]); //14
+// sumTwoSmalllNumbers([15,23,45,6,58,5]); //11
+	
+	//另一种方法
+	function sumOfTwo(arr){
+		var newArr=[];
+		for(var i=0;i<arr.length;i++){
+			newArr[i]=arr[i];
+		}
+		newArr.sort(function(a,b){
+			if(a<b){
+				return -1;
+			}else{
+				return 1;
+			}
+		});
+		console.log(newArr[0]+newArr[1]);
+	}
+	sumOfTwo([5,6,45,23]);// 11 显然这种浅克隆更简单
 
 
 </script>
