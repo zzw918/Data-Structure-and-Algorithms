@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>keyframes</title>
+	<style>
+	*{
+		margin:0;
+		padding:0;
+		list-style: none;
+	}
+		div{
+			position: relative;
+			width: 430px;
+			height: 50px;
+			background: #333;
+		}
+		ul{
+			height: 50px;
+			width: 430px;
+			line-height: 50px;
+			color:white;
+			position: absolute;
+			top: -350px;
+			z-index: -50;
+
+		}
+		@keyframes myAnimation{
+			0%{top:-350px;font-size: 8px;color:white;}
+			50%{font-size: 16px;color:gray;}
+			100%{top:50px;font-size: 18px;color:blue;}
+		}
+		@keyframes myTopAnimation{
+			0%{top:50px;font-size: 18px;color:blue;}
+			50%{font-size: 16px;color:gray;}
+			100%{top:-350px;font-size: 8px;color:white;}
+		}
+
+		li{
+			width: 400px;
+			padding-left: 30px;
+			background: rgba(0,0,0,0.3);
+		}
+		.right{
+			width: 30px;
+			height: 30px;
+			border-radius: 50%;
+			background: rgba(80,200,40,0.1);
+			position: absolute;
+			top:10px;
+			right: 10px;
+		}
+	</style>
+</head>
+<body>
+	<div>
+		<ul>
+			<li>这是一堆文字</li>
+			<li>这是二堆文字</li>
+			<li>这是三堆文字</li>
+			<li>这是四堆文字</li>
+			<li>这是五堆文字</li>
+			<li>这是六堆文字</li>
+			<li>这是七堆文字</li>
+		</ul>
+		<div class="right"></div>
+	</div>
+	<script>
+		var ul = document.querySelector("ul");
+		var li = document.querySelectorAll("li");
+		window.onload=function(){
+			var status = false;
+			var right = document.querySelector(".right");
+			right.onclick=function(){
+				if(!status){
+					ul.style.cssText="animation:myAnimation 2s;top:50px;font-size:18px;color:blue;";
+					status=!status;
+				}else{
+					ul.style.cssText="myTopAnimation 5s;";
+					status=!status;
+				}
+			}
+		}
+	</script>
+</body>
+</html>
